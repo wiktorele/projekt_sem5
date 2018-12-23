@@ -2,17 +2,19 @@ package com.example.wiktor.lost_in_london;
 
 import android.content.Intent;
 import android.media.MediaPlayer;
+import android.support.annotation.StringRes;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
-
-import java.util.Random;
+import android.widget.TextView;
 
 public class Lvl1 extends AppCompatActivity {
 
     Button next;
+    Button restart;
+    Button back;
 
     ImageView image;
 
@@ -38,6 +40,18 @@ public class Lvl1 extends AppCompatActivity {
             R.raw.giraffe
     };
 
+    TextView sign;
+
+    String[] signs = new String[]{
+
+            "Lion",
+            "Tiger",
+            "Wolf",
+            "Bear",
+            "Parrot",
+            "Giraffe"
+    };
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,6 +61,12 @@ public class Lvl1 extends AppCompatActivity {
         image = (ImageView) findViewById(R.id.image);
 
         next = (Button) findViewById(R.id.next);
+
+        back = (Button) findViewById(R.id.back);
+
+        restart = (Button) findViewById(R.id.restart);
+
+        sign = (TextView) findViewById(R.id.sign);
 
         next.setOnClickListener(new View.OnClickListener() {
 
@@ -61,6 +81,8 @@ public class Lvl1 extends AppCompatActivity {
                     sound = MediaPlayer.create(Lvl1.this, sounds[i]);
                     sound.start();
 
+                    sign.setText(signs[i]);
+
                     i++;
                 }else{
 
@@ -68,6 +90,24 @@ public class Lvl1 extends AppCompatActivity {
                     startActivity(intent);
                 }
 
+            }
+        });
+
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent(Lvl1.this, MenuActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        restart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent(Lvl1.this, Lvl1.class);
+                startActivity(intent);
             }
         });
 
