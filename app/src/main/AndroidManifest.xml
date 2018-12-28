@@ -19,7 +19,8 @@
         <activity android:name=".MenuActivity" />
         <activity android:name=".Lvl1" />
         <activity android:name=".Lvl2" />
-        <activity android:name=".Lvl3"></activity>
+        <activity android:name=".Lvl3" />
+        <activity android:name=".Zoo"></activity>
     </application>
 
 </manifest>

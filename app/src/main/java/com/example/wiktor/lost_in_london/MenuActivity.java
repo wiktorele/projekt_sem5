@@ -17,14 +17,11 @@ public class MenuActivity extends AppCompatActivity {
 
         zoo = (Button) findViewById(R.id.zoo);
 
-
         zoo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                Lvl1 x = new Lvl1();
-
-                Intent intent = new Intent(MenuActivity.this, x.getClass());
+                Intent intent = new Intent(MenuActivity.this, Zoo.class);
                 startActivity(intent);
             }
         });
