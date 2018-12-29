@@ -44,12 +44,12 @@ public class Zoo extends Activity {
 
     String[] signs = new String[]{
 
-            "Lion",
-            "Tiger",
-            "Wolf",
-            "Bear",
-            "Parrot",
-            "Giraffe"
+            "lion",
+            "tiger",
+            "wolf",
+            "bear",
+            "parrot",
+            "giraffe"
     };
 
     @Override

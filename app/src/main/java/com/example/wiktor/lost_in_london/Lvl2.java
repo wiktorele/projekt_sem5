@@ -1,7 +1,9 @@
 package com.example.wiktor.lost_in_london;
 
 import android.content.ClipData;
+import android.content.Context;
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.media.MediaPlayer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -21,6 +23,7 @@ import java.util.Random;
 
 public class Lvl2 extends AppCompatActivity {
 
+    String firstImageName, secondImageName, thirdImageName;
     Button next;
     Button restart;
     Button back;
@@ -53,12 +56,12 @@ public class Lvl2 extends AppCompatActivity {
 
     String[] signs = new String[]{
 
-            "Lion",
-            "Tiger",
-            "Wolf",
-            "Bear",
-            "Parrot",
-            "Giraffe"
+            "lion",
+            "tiger",
+            "wolf",
+            "bear",
+            "parrot",
+            "giraffe"
     };
 
     ImageView image1, image2, image3;
@@ -102,19 +105,24 @@ public class Lvl2 extends AppCompatActivity {
 
         r = new Random();
 
-        int i1 = number.get(0);
-        int i2 = number.get(1);
-        int i3 = number.get(2);
-
         //i = r.nextInt(6);
+        image1.setImageResource(images[number.get(0)]);
+        image2.setImageResource(images[number.get(1)]);
+        image3.setImageResource(images[number.get(2)]);
 
-        image1.setImageResource(images[i1]);
-        image2.setImageResource(images[i2]);
-        image3.setImageResource(images[i3]);
+        firstImageName = getResources().getResourceEntryName(images[number.get(0)]);
+        secondImageName = getResources().getResourceEntryName(images[number.get(1)]);
+        thirdImageName = getResources().getResourceEntryName(images[number.get(2)]);
 
-        text1.setText(signs[i1]);
-        text2.setText(signs[i2]);
-        text3.setText(signs[i3]);
+        do {
+
+            text1.setText(signs[number.get(r.nextInt(3))]);
+            text2.setText(signs[number.get(r.nextInt(3))]);
+            text3.setText(signs[number.get(r.nextInt(3))]);
+
+        }while(text1.getText() == text2.getText() || text1.getText() == text3.getText() || text2.getText() == text3.getText());
+
+        next.setOnClickListener(forward);
 
     }
 
@@ -341,20 +349,27 @@ public class Lvl2 extends AppCompatActivity {
         }
     };
 
-    /*View.OnClickListener forward = new View.OnClickListener() {
+    View.OnClickListener forward = new View.OnClickListener() {
+
+        int i = 0;
+
+        public Drawable GetImage(Context c, String ImageName){
+            return c.getResources().getDrawable(c.getResources().getIdentifier(ImageName, signs[i], c.getPackageName()));
+        }
+
         @Override
         public void onClick(View v) {
 
-            if() {
+            if(sign1.getText().toString().equals(firstImageName) && sign2.getText().toString().equals(secondImageName) && sign3.getText().toString().equals(thirdImageName)){
 
                 Intent intent = new Intent(Lvl2.this, Lvl3.class);
                 startActivity(intent);
-            }
-            else{
+            }else{
 
-
+                Intent intent = new Intent(Lvl2.this, Lvl2.class);
+                startActivity(intent);
             }
         }
-    };*/
+    };
 
 }
