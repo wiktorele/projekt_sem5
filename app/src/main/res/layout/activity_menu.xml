@@ -19,7 +19,7 @@
         android:text="Zoo" />
 
     <Button
-        android:id="@+id/school"
+        android:id="@+id/restaurant"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
@@ -28,5 +28,5 @@
         android:layout_marginEnd="85dp"
         android:layout_marginRight="85dp"
         android:layout_marginBottom="142dp"
-        android:text="School" />
+        android:text="Restaurant" />
 </RelativeLayout>

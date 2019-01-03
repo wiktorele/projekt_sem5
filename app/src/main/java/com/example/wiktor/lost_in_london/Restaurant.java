@@ -1,8 +1,8 @@
 package com.example.wiktor.lost_in_london;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.media.MediaPlayer;
-import android.support.annotation.StringRes;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -10,9 +10,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import java.lang.reflect.Constructor;
-
-public class Lvl1 extends AppCompatActivity {
+public class Restaurant extends Activity {
 
     Button next;
     Button restart;
@@ -20,27 +18,35 @@ public class Lvl1 extends AppCompatActivity {
 
     ImageView image;
 
-    Integer[] images;
-
     MediaPlayer sound;
-
-    Integer[] sounds;
 
     TextView sign;
 
-    String[] signs;
+    Integer[] images = new Integer[]{
 
-    Lvl1(String name, Integer images[], Integer sounds[], String signs[]){
+            R.drawable.cheese,
+            R.drawable.chicken,
+            R.drawable.pancake,
+    };
 
-        this.images = images;
-        this.sounds = sounds;
-        this.signs = signs;
-    }
+    Integer[] sounds = new Integer[]{
+
+            R.raw.cheese,
+            R.raw.chicken,
+            R.raw.pancake,
+    };
+
+    String[] signs = new String[]{
+
+            "cheese",
+            "chicken",
+            "pancake",
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_lvl1);
+        setContentView(R.layout.activity_zoo);
 
         image = (ImageView) findViewById(R.id.image);
 
@@ -70,7 +76,7 @@ public class Lvl1 extends AppCompatActivity {
 
                 image.setImageResource(images[i]);
 
-                sound = MediaPlayer.create(Lvl1.this, sounds[i]);
+                sound = MediaPlayer.create(Restaurant.this, sounds[i]);
                 sound.start();
 
                 sign.setText(signs[i]);
@@ -78,7 +84,7 @@ public class Lvl1 extends AppCompatActivity {
                 i++;
             }else{
 
-                Intent intent = new Intent(Lvl1.this, Lvl2.class);
+                Intent intent = new Intent(Restaurant.this, Restaurant2.class);
                 startActivity(intent);
             }
         }
@@ -88,7 +94,7 @@ public class Lvl1 extends AppCompatActivity {
         @Override
         public void onClick(View v) {
 
-            Intent intent = new Intent(Lvl1.this, MenuActivity.class);
+            Intent intent = new Intent(Restaurant.this, MenuActivity.class);
             startActivity(intent);
         }
     };
@@ -97,7 +103,7 @@ public class Lvl1 extends AppCompatActivity {
         @Override
         public void onClick(View v) {
 
-            Intent intent = new Intent(Lvl1.this, Lvl1.class);
+            Intent intent = new Intent(Restaurant.this, Restaurant.class);
             startActivity(intent);
         }
     };

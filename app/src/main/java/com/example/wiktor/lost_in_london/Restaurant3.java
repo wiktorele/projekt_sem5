@@ -13,7 +13,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-public class Lvl3 extends AppCompatActivity {
+public class Restaurant3 extends AppCompatActivity {
 
     ImageView check;
     Button next;
@@ -28,23 +28,23 @@ public class Lvl3 extends AppCompatActivity {
 
     Integer[] images = new Integer[]{
 
-            R.drawable.lion,
-            R.drawable.tiger,
-            R.drawable.wolf,
+            R.drawable.cheese,
+            R.drawable.chicken,
+            R.drawable.pancake,
     };
 
     Integer[] sounds = new Integer[]{
 
-            R.raw.lion,
-            R.raw.tiger,
-            R.raw.wolf,
+            R.raw.cheese,
+            R.raw.chicken,
+            R.raw.pancake,
     };
 
     String[] signs = new String[]{
 
-            "lion",
-            "tiger",
-            "wolf",
+            "cheese",
+            "chicken",
+            "pancake",
     };
 
     final Handler handler = new Handler();
@@ -52,9 +52,9 @@ public class Lvl3 extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_lvl3);
+        setContentView(R.layout.activity_zoo3);
 
-        check = findViewById(R.id.check);
+        check = (ImageView) findViewById(R.id.check);
 
         image = (ImageView) findViewById(R.id.image);
 
@@ -79,7 +79,7 @@ public class Lvl3 extends AppCompatActivity {
         @Override
         public void onClick(View v) {
 
-            Intent intent = new Intent(Lvl3.this, MenuActivity.class);
+            Intent intent = new Intent(Restaurant3.this, MenuActivity.class);
             startActivity(intent);
         }
     };
@@ -88,7 +88,7 @@ public class Lvl3 extends AppCompatActivity {
         @Override
         public void onClick(View v) {
 
-            Intent intent = new Intent(Lvl3.this, Lvl3.class);
+            Intent intent = new Intent(Restaurant3.this, Restaurant3.class);
             startActivity(intent);
         }
     };
@@ -106,7 +106,7 @@ public class Lvl3 extends AppCompatActivity {
                 check.setImageResource(R.drawable.correct);
                 startAnim();
 
-                sound = MediaPlayer.create(Lvl3.this, R.raw.correct);
+                sound = MediaPlayer.create(Restaurant3.this, R.raw.correct);
                 sound.start();
 
                 if(i < (images.length - 1)) {
@@ -125,7 +125,7 @@ public class Lvl3 extends AppCompatActivity {
                         @Override
                         public void run() {
 
-                            Intent intent = new Intent(Lvl3.this, MenuActivity.class);
+                            Intent intent = new Intent(Restaurant3.this, MenuActivity.class);
                             startActivity(intent);
                         }
                     }, 1200);
@@ -138,7 +138,7 @@ public class Lvl3 extends AppCompatActivity {
                 check.setImageResource(R.drawable.wrong);
                 startAnim();
 
-                sound = MediaPlayer.create(Lvl3.this, R.raw.wrong);
+                sound = MediaPlayer.create(Restaurant3.this, R.raw.wrong);
                 sound.start();
 
                 handler.postDelayed(new Runnable() {

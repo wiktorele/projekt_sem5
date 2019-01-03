@@ -8,7 +8,7 @@ import android.widget.Button;
 
 public class MenuActivity extends AppCompatActivity {
 
-    Button zoo;
+    Button zoo, restaurant;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -16,12 +16,22 @@ public class MenuActivity extends AppCompatActivity {
         setContentView(R.layout.activity_menu);
 
         zoo = (Button) findViewById(R.id.zoo);
+        restaurant = (Button) findViewById(R.id.restaurant);
 
         zoo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
                 Intent intent = new Intent(MenuActivity.this, Zoo.class);
+                startActivity(intent);
+            }
+        });
+
+        restaurant.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent(MenuActivity.this, Restaurant.class);
                 startActivity(intent);
             }
         });

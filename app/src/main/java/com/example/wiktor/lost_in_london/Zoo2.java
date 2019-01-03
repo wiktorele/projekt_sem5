@@ -24,7 +24,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Random;
 
-public class Lvl2 extends AppCompatActivity {
+public class Zoo2 extends AppCompatActivity {
 
     int image4, image5, image6;
     ImageView check;
@@ -70,7 +70,7 @@ public class Lvl2 extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_lvl2);
+        setContentView(R.layout.activity_zoo2);
 
         check = findViewById(R.id.check);
         sign1 = findViewById(R.id.sign_1);
@@ -327,7 +327,7 @@ public class Lvl2 extends AppCompatActivity {
         @Override
         public void onClick(View v) {
 
-            Intent intent = new Intent(Lvl2.this, MenuActivity.class);
+            Intent intent = new Intent(Zoo2.this, MenuActivity.class);
             startActivity(intent);
         }
     };
@@ -336,7 +336,7 @@ public class Lvl2 extends AppCompatActivity {
         @Override
         public void onClick(View v) {
 
-            Intent intent = new Intent(Lvl2.this, Lvl2.class);
+            Intent intent = new Intent(Zoo2.this, Zoo2.class);
             startActivity(intent);
         }
     };
@@ -354,43 +354,43 @@ public class Lvl2 extends AppCompatActivity {
 
                 if(i < images.length){
 
-                sound = MediaPlayer.create(Lvl2.this, R.raw.correct);
-                sound.start();
+                    sound = MediaPlayer.create(Zoo2.this, R.raw.correct);
+                    sound.start();
 
-                check.setAlpha(255);
-                check.setImageResource(R.drawable.correct);
-                startAnim();
+                    check.setAlpha(255);
+                    check.setImageResource(R.drawable.correct);
+                    startAnim();
 
-                handler.postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
+                    handler.postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
 
-                        sign1.setText("Image 1");
-                        sign2.setText("Image 2");
-                        sign3.setText("Image 3");
+                            sign1.setText("Image 1");
+                            sign2.setText("Image 2");
+                            sign3.setText("Image 3");
 
-                        image1.setImageResource(images[i]);
-                        image2.setImageResource(images[i + 1]);
-                        image3.setImageResource(images[i + 2]);
+                            image1.setImageResource(images[i]);
+                            image2.setImageResource(images[i + 1]);
+                            image3.setImageResource(images[i + 2]);
 
-                        firstImageName = getResources().getResourceEntryName(images[i]);
-                        secondImageName = getResources().getResourceEntryName(images[i + 1]);
-                        thirdImageName = getResources().getResourceEntryName(images[i + 2]);
+                            firstImageName = getResources().getResourceEntryName(images[i]);
+                            secondImageName = getResources().getResourceEntryName(images[i + 1]);
+                            thirdImageName = getResources().getResourceEntryName(images[i + 2]);
 
-                        do {
+                            do {
 
-                            text1.setText(signs[r.nextInt(i)+3]);
-                            text2.setText(signs[r.nextInt(i)+3]);
-                            text3.setText(signs[r.nextInt(i)+3]);
+                                text1.setText(signs[r.nextInt(i)+3]);
+                                text2.setText(signs[r.nextInt(i)+3]);
+                                text3.setText(signs[r.nextInt(i)+3]);
 
-                        }while(text1.getText() == text2.getText() || text1.getText() == text3.getText() || text2.getText() == text3.getText());
+                            }while(text1.getText() == text2.getText() || text1.getText() == text3.getText() || text2.getText() == text3.getText());
 
-                        check.setAlpha(0);
-                    }
-                }, 1200);
+                            check.setAlpha(0);
+                        }
+                    }, 1200);
                 }else{
 
-                    sound = MediaPlayer.create(Lvl2.this, R.raw.correct);
+                    sound = MediaPlayer.create(Zoo2.this, R.raw.correct);
                     sound.start();
 
                     check.setAlpha(255);
@@ -402,7 +402,7 @@ public class Lvl2 extends AppCompatActivity {
                         public void run() {
 
                             check.setAlpha(0);
-                            Intent intent = new Intent(Lvl2.this, Lvl3.class);
+                            Intent intent = new Intent(Zoo2.this, Zoo3.class);
                             startActivity(intent);
                         }
                     }, 1200);
@@ -410,7 +410,7 @@ public class Lvl2 extends AppCompatActivity {
 
             }else{
 
-                sound = MediaPlayer.create(Lvl2.this, R.raw.wrong);
+                sound = MediaPlayer.create(Zoo2.this, R.raw.wrong);
                 sound.start();
 
                 check.setAlpha(255);

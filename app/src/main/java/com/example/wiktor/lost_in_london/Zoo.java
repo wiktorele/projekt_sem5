@@ -84,7 +84,7 @@ public class Zoo extends Activity {
                 i++;
             }else{
 
-                Intent intent = new Intent(Zoo.this, Lvl2.class);
+                Intent intent = new Intent(Zoo.this, Zoo2.class);
                 startActivity(intent);
             }
         }

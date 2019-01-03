@@ -17,14 +17,16 @@
             </intent-filter>
         </activity>
         <activity android:name=".MenuActivity" />
-        <activity android:name=".Lvl1" />
-        <activity android:name=".Lvl2" />
-        <activity android:name=".Lvl3" />
         <activity android:name=".Zoo" />
         <activity
             android:name=".Zoo_2"
             android:label="@string/title_activity_zoo_2"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".Zoo2" />
+        <activity android:name=".Zoo3" />
+        <activity android:name=".Restaurant" />
+        <activity android:name=".Restaurant2" />
+        <activity android:name=".Restaurant3"></activity>
     </application>
 
 </manifest>
