@@ -2,9 +2,12 @@ package com.example.wiktor.lost_in_london;
 
 import android.content.Intent;
 import android.media.MediaPlayer;
+import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.view.animation.AlphaAnimation;
+import android.view.animation.Animation;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -12,6 +15,7 @@ import android.widget.TextView;
 
 public class Lvl3 extends AppCompatActivity {
 
+    ImageView check;
     Button next;
     Button restart;
     Button back;
@@ -27,9 +31,6 @@ public class Lvl3 extends AppCompatActivity {
             R.drawable.lion,
             R.drawable.tiger,
             R.drawable.wolf,
-            R.drawable.bear,
-            R.drawable.parrot,
-            R.drawable.giraffe
     };
 
     Integer[] sounds = new Integer[]{
@@ -37,9 +38,6 @@ public class Lvl3 extends AppCompatActivity {
             R.raw.lion,
             R.raw.tiger,
             R.raw.wolf,
-            R.raw.bear,
-            R.raw.parrot,
-            R.raw.giraffe
     };
 
     String[] signs = new String[]{
@@ -47,15 +45,16 @@ public class Lvl3 extends AppCompatActivity {
             "lion",
             "tiger",
             "wolf",
-            "bear",
-            "parrot",
-            "giraffe"
     };
+
+    final Handler handler = new Handler();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lvl3);
+
+        check = findViewById(R.id.check);
 
         image = (ImageView) findViewById(R.id.image);
 
@@ -96,29 +95,66 @@ public class Lvl3 extends AppCompatActivity {
 
     View.OnClickListener forward = new View.OnClickListener() {
 
-        int i = 1;
-        //String editText = sign.getText().toString();
+        int i = 0;
 
         @Override
         public void onClick(View v) {
 
-            if (sign.getText().toString().equals(signs[i - 1]) && i < images.length){
+            if (sign.getText().toString().equals(signs[i])){
 
-                image.setImageResource(images[i]);
+                check.setAlpha(255);
+                check.setImageResource(R.drawable.correct);
+                startAnim();
 
-                sign.setText("");
+                sound = MediaPlayer.create(Lvl3.this, R.raw.correct);
+                sound.start();
 
-                i++;
-            }else if (i >= images.length){
+                if(i < (images.length - 1)) {
+                    handler.postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            i++;
+                            check.setAlpha(0);
+                            image.setImageResource(images[i]);
+                            sign.setText("");
+                        }
+                    }, 1200);
+                }else if(i >= (images.length - 1)){
 
-                Intent intent = new Intent(Lvl3.this, MenuActivity.class);
-                startActivity(intent);
+                    handler.postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+
+                            Intent intent = new Intent(Lvl3.this, MenuActivity.class);
+                            startActivity(intent);
+                        }
+                    }, 1200);
+
+                }
 
             }else{
 
-                sound = MediaPlayer.create(Lvl3.this, sounds[i]);
+                check.setAlpha(255);
+                check.setImageResource(R.drawable.wrong);
+                startAnim();
+
+                sound = MediaPlayer.create(Lvl3.this, R.raw.wrong);
                 sound.start();
+
+                handler.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+
+                        check.setAlpha(0);
+                    }
+                }, 2000);
             }
+        }
+        private void startAnim(){
+
+            Animation alpha = new AlphaAnimation(1f, 0f);
+            alpha.setDuration(2000);
+            check.startAnimation(alpha);
         }
     };
 }

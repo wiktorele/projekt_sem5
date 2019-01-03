@@ -20,7 +20,11 @@
         <activity android:name=".Lvl1" />
         <activity android:name=".Lvl2" />
         <activity android:name=".Lvl3" />
-        <activity android:name=".Zoo"></activity>
+        <activity android:name=".Zoo" />
+        <activity
+            android:name=".Zoo_2"
+            android:label="@string/title_activity_zoo_2"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>

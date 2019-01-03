@@ -5,11 +5,14 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.media.MediaPlayer;
+import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.DragEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.AlphaAnimation;
+import android.view.animation.Animation;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -23,21 +26,17 @@ import java.util.Random;
 
 public class Lvl2 extends AppCompatActivity {
 
-    String firstImageName, secondImageName, thirdImageName;
+    int image4, image5, image6;
+    ImageView check;
     Button next;
     Button restart;
     Button back;
-
-    ImageView image;
 
     Integer[] images = new Integer[]{
 
             R.drawable.lion,
             R.drawable.tiger,
             R.drawable.wolf,
-            R.drawable.bear,
-            R.drawable.parrot,
-            R.drawable.giraffe
     };
 
     MediaPlayer sound;
@@ -47,9 +46,6 @@ public class Lvl2 extends AppCompatActivity {
             R.raw.lion,
             R.raw.tiger,
             R.raw.wolf,
-            R.raw.bear,
-            R.raw.parrot,
-            R.raw.giraffe
     };
 
     TextView sign;
@@ -59,22 +55,24 @@ public class Lvl2 extends AppCompatActivity {
             "lion",
             "tiger",
             "wolf",
-            "bear",
-            "parrot",
-            "giraffe"
     };
 
     ImageView image1, image2, image3;
 
     TextView sign1, sign2, sign3, text1, text2, text3;
 
+    String firstImageName, secondImageName, thirdImageName;
+
     Random r;
+
+    final Handler handler = new Handler();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lvl2);
 
+        check = findViewById(R.id.check);
         sign1 = findViewById(R.id.sign_1);
         sign2 = findViewById(R.id.sign_2);
         sign3 = findViewById(R.id.sign_3);
@@ -99,31 +97,25 @@ public class Lvl2 extends AppCompatActivity {
         back.setOnClickListener(backward);
         restart.setOnClickListener(re);
 
-        ArrayList<Integer> number = new ArrayList<Integer>();
-        for (int i = 1; i < 6; ++i) number.add(i);
-        Collections.shuffle(number);
-
         r = new Random();
 
-        //i = r.nextInt(6);
-        image1.setImageResource(images[number.get(0)]);
-        image2.setImageResource(images[number.get(1)]);
-        image3.setImageResource(images[number.get(2)]);
+        image1.setImageResource(images[0]);
+        image2.setImageResource(images[1]);
+        image3.setImageResource(images[2]);
 
-        firstImageName = getResources().getResourceEntryName(images[number.get(0)]);
-        secondImageName = getResources().getResourceEntryName(images[number.get(1)]);
-        thirdImageName = getResources().getResourceEntryName(images[number.get(2)]);
+        firstImageName = getResources().getResourceEntryName(images[0]);
+        secondImageName = getResources().getResourceEntryName(images[1]);
+        thirdImageName = getResources().getResourceEntryName(images[2]);
 
         do {
 
-            text1.setText(signs[number.get(r.nextInt(3))]);
-            text2.setText(signs[number.get(r.nextInt(3))]);
-            text3.setText(signs[number.get(r.nextInt(3))]);
+            text1.setText(signs[r.nextInt(3)]);
+            text2.setText(signs[r.nextInt(3)]);
+            text3.setText(signs[r.nextInt(3)]);
 
         }while(text1.getText() == text2.getText() || text1.getText() == text3.getText() || text2.getText() == text3.getText());
 
         next.setOnClickListener(forward);
-
     }
 
     View.OnLongClickListener longClickListener = new View.OnLongClickListener() {
@@ -353,22 +345,93 @@ public class Lvl2 extends AppCompatActivity {
 
         int i = 0;
 
-        public Drawable GetImage(Context c, String ImageName){
-            return c.getResources().getDrawable(c.getResources().getIdentifier(ImageName, signs[i], c.getPackageName()));
-        }
-
         @Override
         public void onClick(View v) {
 
             if(sign1.getText().toString().equals(firstImageName) && sign2.getText().toString().equals(secondImageName) && sign3.getText().toString().equals(thirdImageName)){
 
-                Intent intent = new Intent(Lvl2.this, Lvl3.class);
-                startActivity(intent);
+                i = i + 3;
+
+                if(i < images.length){
+
+                sound = MediaPlayer.create(Lvl2.this, R.raw.correct);
+                sound.start();
+
+                check.setAlpha(255);
+                check.setImageResource(R.drawable.correct);
+                startAnim();
+
+                handler.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+
+                        sign1.setText("Image 1");
+                        sign2.setText("Image 2");
+                        sign3.setText("Image 3");
+
+                        image1.setImageResource(images[i]);
+                        image2.setImageResource(images[i + 1]);
+                        image3.setImageResource(images[i + 2]);
+
+                        firstImageName = getResources().getResourceEntryName(images[i]);
+                        secondImageName = getResources().getResourceEntryName(images[i + 1]);
+                        thirdImageName = getResources().getResourceEntryName(images[i + 2]);
+
+                        do {
+
+                            text1.setText(signs[r.nextInt(i)+3]);
+                            text2.setText(signs[r.nextInt(i)+3]);
+                            text3.setText(signs[r.nextInt(i)+3]);
+
+                        }while(text1.getText() == text2.getText() || text1.getText() == text3.getText() || text2.getText() == text3.getText());
+
+                        check.setAlpha(0);
+                    }
+                }, 1200);
+                }else{
+
+                    sound = MediaPlayer.create(Lvl2.this, R.raw.correct);
+                    sound.start();
+
+                    check.setAlpha(255);
+                    check.setImageResource(R.drawable.correct);
+                    startAnim();
+
+                    handler.postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+
+                            check.setAlpha(0);
+                            Intent intent = new Intent(Lvl2.this, Lvl3.class);
+                            startActivity(intent);
+                        }
+                    }, 1200);
+                }
+
             }else{
 
-                Intent intent = new Intent(Lvl2.this, Lvl2.class);
-                startActivity(intent);
+                sound = MediaPlayer.create(Lvl2.this, R.raw.wrong);
+                sound.start();
+
+                check.setAlpha(255);
+                check.setImageResource(R.drawable.wrong);
+                startAnim();
+
+                handler.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+
+                        check.setAlpha(0);
+                    }
+                }, 2000);
+
             }
+        }
+        private void startAnim(){
+
+            Animation alpha = new AlphaAnimation(1f, 0f);
+            alpha.setDuration(2000);
+            check.startAnimation(alpha);
         }
     };
 

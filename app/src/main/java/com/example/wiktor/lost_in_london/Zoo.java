@@ -27,9 +27,6 @@ public class Zoo extends Activity {
             R.drawable.lion,
             R.drawable.tiger,
             R.drawable.wolf,
-            R.drawable.bear,
-            R.drawable.parrot,
-            R.drawable.giraffe
     };
 
     Integer[] sounds = new Integer[]{
@@ -37,9 +34,6 @@ public class Zoo extends Activity {
             R.raw.lion,
             R.raw.tiger,
             R.raw.wolf,
-            R.raw.bear,
-            R.raw.parrot,
-            R.raw.giraffe
     };
 
     String[] signs = new String[]{
@@ -47,9 +41,6 @@ public class Zoo extends Activity {
             "lion",
             "tiger",
             "wolf",
-            "bear",
-            "parrot",
-            "giraffe"
     };
 
     @Override
