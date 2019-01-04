@@ -48,7 +48,7 @@ public class Zoo2 extends AppCompatActivity {
             R.raw.wolf,
     };
 
-    TextView sign;
+    TextView sign, name;
 
     String[] signs = new String[]{
 
@@ -72,6 +72,7 @@ public class Zoo2 extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_zoo2);
 
+        name =  findViewById(R.id.name);
         check = findViewById(R.id.check);
         sign1 = findViewById(R.id.sign_1);
         sign2 = findViewById(R.id.sign_2);
@@ -85,6 +86,8 @@ public class Zoo2 extends AppCompatActivity {
         back = findViewById(R.id.back);
         restart = findViewById(R.id.restart);
         next = findViewById(R.id.next);
+
+        name.setText("Zoo");
 
         text1.setOnLongClickListener(longClickListener);
         text2.setOnLongClickListener(longClickListener);

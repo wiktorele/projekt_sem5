@@ -57,7 +57,7 @@ public class Restaurant2 extends AppCompatActivity {
 
     ImageView image1, image2, image3;
 
-    TextView sign1, sign2, sign3, text1, text2, text3;
+    TextView sign1, sign2, sign3, text1, text2, text3, name;
 
     String firstImageName, secondImageName, thirdImageName;
 
@@ -70,6 +70,7 @@ public class Restaurant2 extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_zoo2);
 
+        name =  findViewById(R.id.name);
         check = findViewById(R.id.check);
         sign1 = findViewById(R.id.sign_1);
         sign2 = findViewById(R.id.sign_2);
@@ -83,6 +84,8 @@ public class Restaurant2 extends AppCompatActivity {
         back = findViewById(R.id.back);
         restart = findViewById(R.id.restart);
         next = findViewById(R.id.next);
+
+        name.setText("Restaurant");
 
         text1.setOnLongClickListener(longClickListener);
         text2.setOnLongClickListener(longClickListener);

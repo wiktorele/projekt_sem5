@@ -24,7 +24,7 @@ public class Restaurant3 extends AppCompatActivity {
 
     MediaPlayer sound;
 
-    TextView sign;
+    TextView sign, name;
 
     Integer[] images = new Integer[]{
 
@@ -54,6 +54,8 @@ public class Restaurant3 extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_zoo3);
 
+        name = (TextView) findViewById(R.id.name);
+
         check = (ImageView) findViewById(R.id.check);
 
         image = (ImageView) findViewById(R.id.image);
@@ -65,6 +67,8 @@ public class Restaurant3 extends AppCompatActivity {
         restart = (Button) findViewById(R.id.restart);
 
         sign = (EditText) findViewById(R.id.sign);
+
+        name.setText("Restaurant");
 
         next.setOnClickListener(forward);
 
