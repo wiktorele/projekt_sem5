@@ -1,8 +1,11 @@
 package com.example.wiktor.lost_in_london;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.media.MediaPlayer;
 import android.os.Handler;
+import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -15,6 +18,7 @@ import android.widget.TextView;
 
 public class Zoo3 extends AppCompatActivity {
 
+    int score;
     ImageView check;
     Button next;
     Button restart;
@@ -77,6 +81,7 @@ public class Zoo3 extends AppCompatActivity {
         restart.setOnClickListener(re);
 
         image.setImageResource(images[0]);
+
     }
 
     View.OnClickListener backward = new View.OnClickListener() {
@@ -123,17 +128,24 @@ public class Zoo3 extends AppCompatActivity {
                             sign.setText("");
                         }
                     }, 1200);
+
                 }else if(i >= (images.length - 1)){
+                    if(score < 1) {
+                        score++;
+                        saveScore(score);
+                        handler.postDelayed(new Runnable() {
+                            @Override
+                            public void run() {
 
-                    handler.postDelayed(new Runnable() {
-                        @Override
-                        public void run() {
-
-                            Intent intent = new Intent(Zoo3.this, MenuActivity.class);
-                            startActivity(intent);
-                        }
-                    }, 1200);
-
+                                Intent intent = new Intent(getApplicationContext(), MenuActivity.class);
+                                intent.putExtra("SCORE", score);
+                                startActivity(intent);
+                            }
+                        }, 1200);
+                    }else{
+                        Intent intent = new Intent(Zoo3.this, MenuActivity.class);
+                        startActivity(intent);
+                    }
                 }
 
             }else{
@@ -161,4 +173,11 @@ public class Zoo3 extends AppCompatActivity {
             check.startAnimation(alpha);
         }
     };
+    public void saveScore(int points){
+        SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(this);
+        SharedPreferences.Editor editor = sharedPref.edit();
+        editor.putInt("points", points);
+        editor.apply();
+    }
+
 }

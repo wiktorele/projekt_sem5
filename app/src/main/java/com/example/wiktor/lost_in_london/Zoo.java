@@ -20,7 +20,7 @@ public class Zoo extends Activity {
 
     MediaPlayer sound;
 
-    TextView sign, name;
+    TextView sign, name, explanation;
 
     Integer[] images = new Integer[]{
 
@@ -48,17 +48,19 @@ public class Zoo extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_zoo);
 
-        name = (TextView) findViewById(R.id.name);
+        explanation = findViewById(R.id.explanation);
 
-        image = (ImageView) findViewById(R.id.image);
+        name =  findViewById(R.id.name);
 
-        next = (Button) findViewById(R.id.next);
+        image = findViewById(R.id.image);
 
-        back = (Button) findViewById(R.id.back);
+        next = findViewById(R.id.next);
 
-        restart = (Button) findViewById(R.id.restart);
+        back = findViewById(R.id.back);
 
-        sign = (TextView) findViewById(R.id.sign);
+        restart = findViewById(R.id.restart);
+
+        sign = findViewById(R.id.sign);
 
         name.setText("Zoo");
 
@@ -76,6 +78,9 @@ public class Zoo extends Activity {
         @Override
 
         public void onClick(View v) {
+
+            explanation.setAlpha(0);
+
             if(i < images.length) {
 
                 image.setImageResource(images[i]);

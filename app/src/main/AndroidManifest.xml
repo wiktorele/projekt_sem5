@@ -26,7 +26,7 @@
         <activity android:name=".Zoo3" />
         <activity android:name=".Restaurant" />
         <activity android:name=".Restaurant2" />
-        <activity android:name=".Restaurant3"></activity>
+        <activity android:name=".Restaurant3" />
     </application>
 
 </manifest>

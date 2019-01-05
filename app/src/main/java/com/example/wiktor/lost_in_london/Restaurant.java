@@ -20,7 +20,7 @@ public class Restaurant extends Activity {
 
     MediaPlayer sound;
 
-    TextView sign, name;
+    TextView sign, name, explanation;
 
     Integer[] images = new Integer[]{
 
@@ -47,6 +47,8 @@ public class Restaurant extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_zoo);
+
+        explanation = findViewById(R.id.explanation);
 
         name = (TextView) findViewById(R.id.name);
 
@@ -76,6 +78,8 @@ public class Restaurant extends Activity {
         @Override
 
         public void onClick(View v) {
+
+            explanation.setAlpha(0);
             if(i < images.length) {
 
                 image.setImageResource(images[i]);
