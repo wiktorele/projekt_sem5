@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/background"
     tools:context=".Lvl3">
 
     <TextView
@@ -15,7 +16,7 @@
         android:textSize="35dp"
         android:textAlignment="center"
         android:background="@color/colorPrimaryDark"
-        android:text="Zoo" />
+        android:text="" />
 
     <ImageView
         android:id="@+id/image"
