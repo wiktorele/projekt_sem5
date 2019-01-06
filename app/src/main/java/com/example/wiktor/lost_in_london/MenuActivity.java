@@ -22,7 +22,7 @@ public class MenuActivity extends AppCompatActivity {
     TextView points;
     ImageView finish;
     MediaPlayer sound;
-    RelativeLayout background;
+    int background;
 
     int currentScore = 0;
     int newScore;
@@ -31,6 +31,7 @@ public class MenuActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu);
+
 
         currentScore = getPoints();
         newScore = getIntent().getIntExtra("SCORE", 0);

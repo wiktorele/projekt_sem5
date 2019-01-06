@@ -42,8 +42,9 @@
         android:layout_centerHorizontal="true"
         android:textSize="35dp"
         android:textAlignment="center"
-        android:background="@color/colorPrimaryDark"
-        android:text="" />
+        android:background="@color/header"
+        android:text=""
+        android:textStyle="bold"/>
 
     <ImageView
         android:id="@+id/image_1"
@@ -60,7 +61,7 @@
         android:layout_height="100dp"
         android:layout_centerHorizontal="true"
         android:layout_below="@id/name"
-        android:layout_marginTop="20dp"/>
+        android:layout_marginTop="30dp"/>
 
     <ImageView
         android:id="@+id/image_3"
@@ -82,7 +83,8 @@
         android:padding="10dp"
         android:text="Image 1"
         android:textAlignment="center"
-        android:textSize="15dp" />
+        android:textSize="15dp"
+        android:textColor="@color/black"/>
 
     <TextView
         android:id="@+id/sign_2"
@@ -95,7 +97,8 @@
         android:textAlignment="center"
         android:textSize="15dp"
         android:padding="10dp"
-        android:text="Image 2" />
+        android:text="Image 2"
+        android:textColor="@color/black"/>
 
     <TextView
         android:id="@+id/sign_3"
@@ -108,7 +111,8 @@
         android:textAlignment="center"
         android:textSize="15dp"
         android:padding="10dp"
-        android:text="Image 3" />
+        android:text="Image 3"
+        android:textColor="@color/black"/>
 
     <TextView
         android:id="@+id/text_1"
@@ -119,7 +123,8 @@
         android:layout_marginBottom="190dp"
         android:textAlignment="center"
         android:textSize="20dp"
-        android:text="Text" />
+        android:text="Text"
+        android:textColor="@color/black"/>
 
     <TextView
         android:id="@+id/text_2"
@@ -130,7 +135,8 @@
         android:layout_marginTop="50dp"
         android:textAlignment="center"
         android:textSize="20dp"
-        android:text="Text" />
+        android:text="Text"
+        android:textColor="@color/black"/>
 
     <TextView
         android:id="@+id/text_3"
@@ -141,7 +147,8 @@
         android:layout_marginTop="50dp"
         android:textAlignment="center"
         android:textSize="20dp"
-        android:text="Text" />
+        android:text="Text"
+        android:textColor="@color/black"/>
 
     <ImageView
         android:id="@+id/check"
@@ -149,4 +156,10 @@
         android:layout_height="match_parent"
         android:layout_marginVertical="50dp"
         />
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentBottom="true"
+        android:layout_marginTop="520dp"
+        android:background="@color/footer"/>
 </RelativeLayout>

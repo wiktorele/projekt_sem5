@@ -6,4 +6,25 @@
     android:layout_height="match_parent"
     android:background="@drawable/main"
     tools:context=".MainActivity">
+
+
+    <TextView
+        android:id="@+id/opis"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="72dp"
+        android:layout_marginRight="0dp"
+        android:text="Zgubiłeś się w Londynie. Odwiedź jak najwięcej miejsc, aby dowiedzieć się gdzie jest Twoja wycieczka... Kliknij gdziekolwiek, aby kontynuować."
+        android:textColor="@color/black"
+        android:textSize="20dp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_centerHorizontal="true" />
+
 </RelativeLayout>

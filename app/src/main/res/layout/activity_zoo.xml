@@ -16,7 +16,7 @@
         android:textSize="35dp"
         android:textAlignment="center"
         android:background="@color/header"
-        />
+        android:textStyle="bold" />
 
     <ImageView
         android:id="@+id/image"
@@ -41,7 +41,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="380dp"/>
+        android:layout_marginTop="380dp"
+        android:textColor="@color/black"/>
 
     <Button
         android:id="@+id/back"
@@ -69,6 +70,13 @@
         android:layout_marginTop="202dp"
         android:text="Click 'Next' to start"
         android:textSize="30dp"/>
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentBottom="true"
+        android:layout_marginTop="520dp"
+        android:background="@color/footer"/>
 
 
 </RelativeLayout>
